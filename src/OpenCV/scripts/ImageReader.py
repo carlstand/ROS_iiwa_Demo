@@ -14,7 +14,7 @@ def ImageReader():
     pub = rospy.Publisher('image_topic', Image, queue_size=10)
     rospy.init_node('ImageReader', anonymous=True)
     rate = rospy.Rate(0.5)
-    img = cv2.imread("/home/carlstand/catkin_ws/src/beginner_tutorials/scripts/example.png")
+    img = cv2.imread("example.png")
     bridge = CvBridge()
     while not rospy.is_shutdown():
         # hello_str = "hello world %s" % rospy.get_time()
