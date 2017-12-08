@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/carlstand/ROS_iiwa_Demo/devel -DCMAKE_INSTALL_PREFIX=/home/carlstand/ROS_iiwa_Demo/install -G Unix Makefiles
