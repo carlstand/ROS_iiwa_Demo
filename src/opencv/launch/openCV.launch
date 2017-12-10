@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+<node name ="ImageReader1" pkg="opencv" type="ImageReader.py"/>
+<node name ="image_converter1" pkg="opencv" type="openCVTest.py"/>
+</launch>
