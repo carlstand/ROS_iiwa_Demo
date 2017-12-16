@@ -20,15 +20,12 @@ def ImageReader():
         # Capture frame-by-frame
         ret, frame = cap.read()
 
-        # Our operations on the frame come here
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
         # Display the resulting frame
-        cv2.imshow('frame', gray)
+        cv2.imshow('frame', frame)
         cv2.waitKey(40)
         # hello_str = "hello world %s" % rospy.get_time()
         # rospy.loginfo(hello_str)
-        pub.publish(bridge.cv2_to_imgmsg(gray, "mono8"))
+        pub.publish(bridge.cv2_to_imgmsg(frame, "bgr8"))
         rate.sleep()
 
 
