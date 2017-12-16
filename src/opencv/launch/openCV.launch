@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-<node name ="ImageReader1" pkg="opencv" type="ImageReader.py"/>
-<node name ="image_converter1" pkg="opencv" type="openCVTest.py"/>
+<node name ="ImageReaderNode" pkg="opencv" type="ImageReaderNode.py"/>
+<node name ="ImageToPostionNode" pkg="opencv" type="ImageToPostionNode.py"/>
 </launch>
