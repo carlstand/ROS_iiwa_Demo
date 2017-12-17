@@ -17,7 +17,7 @@ class pattern_recognizer:
         newCnts = []
         for cnt in cnts:
             for pattern in patterns:
-                if cv2.matchShapes(pattern, cnt, 1, 0.0) < 0.001:
+                if cv2.matchShapes(pattern, cnt, cv2.CONTOURS_MATCH_I1, 0) < 0.01:
                     newCnts.append(cnt)
 
         contours = image.copy()

@@ -28,7 +28,7 @@ class ImageToPositionNode:
 
         contours = self.prer.getRecognizedContours(cv_image, self.pr.getPatternContour())
 
-        print("found {} contours.".format(len(contours)))
+        print("found {} patterns.".format(len(contours)))
 
 
 if __name__ == '__main__':
