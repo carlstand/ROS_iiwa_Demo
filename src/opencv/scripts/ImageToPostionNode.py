@@ -3,7 +3,7 @@
 import rospy
 import cv2
 import openCVLibs.patternReader as pr
-import openCVLibs.patternRecognize as prer
+import openCVLibs.patternRecognizer as prer
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 

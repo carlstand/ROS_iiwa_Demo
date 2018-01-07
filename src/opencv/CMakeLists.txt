@@ -10,6 +10,7 @@ project(opencv)
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   rospy
+  camera_info_manager
   sensor_msgs
   std_msgs
 )

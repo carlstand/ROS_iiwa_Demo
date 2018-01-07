@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 <node name ="ImageReaderNode" pkg="opencv" type="ImageReaderNode.py"/>
-<node name ="ImageToPostionNode" pkg="opencv" type="ImageToPostionNode.py"/>
+<!-- <node name ="ImageToPostionNode" pkg="opencv" type="ImageToPostionNode.py"/> -->
+<node name ="USBCameraDriverNode" pkg="opencv" type="USBCameraDriver.py"/>
 </launch>
