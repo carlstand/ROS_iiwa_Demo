@@ -20,9 +20,10 @@ class ImageReader:
     def run(self):
         while not rospy.is_shutdown():
             ret, frame = self.cap.read()
+            # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             cv2.imshow('frame', frame)
             cv2.waitKey(40)
-            self.pub.publish(self.bridge.cv2_to_imgmsg(frame, "bgr8"))
+            self.pub.publish(self.bridge.cv2_to_imgmsg(frame, "rgb8"))
             self.rate.sleep()
 
 
