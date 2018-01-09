@@ -9,7 +9,9 @@ set up a framework, and enable the iiwa to track a moving target
 
 
 ## steps:
-- source /{ROS_iiwa_Demo_folder}/devel/setup.bash
+- cd {ROS_iiwa_Demo_folder}
+- catkin_make
+- source {ROS_iiwa_Demo_folder}/devel/setup.bash
 - roslaunch opencv openCV.launch 
 - rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.0138 image:=/image_topic camera:=/camera
 
