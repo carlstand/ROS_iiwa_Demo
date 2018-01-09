@@ -8,7 +8,7 @@ set up a framework, and enable the iiwa to track a moving target
 - sudo apt-get install libvisp-dev visp-images-data ros-kinetic-visp ros-kinetic-vision-visp ros-kinetic-camera-info-manager-py ros-kinetic-camera-calibration
 
 
-## steps:
+## run steps:
 - cd {ROS_iiwa_Demo_folder}
 - catkin_make
 - source {ROS_iiwa_Demo_folder}/devel/setup.bash
@@ -17,4 +17,9 @@ set up a framework, and enable the iiwa to track a moving target
 
 
 A valid QR-code pattern that can be downloaded: https://github.com/lagadic/vision_visp/releases/download/vision_visp-0.5.0/template-qr-code.pdf
-A Checkerborad example can be donloaded: http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=get&target=check-108.pdf
+
+A Checkerborad example can be downloaded: http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration?action=AttachFile&do=get&target=check-108.pdf
+
+
+## nodes graph:
+![nodes graph](rosgraph.png)
