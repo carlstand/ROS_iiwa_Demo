@@ -36,14 +36,7 @@ class Match():
         kp2, des2 = detector.detectAndCompute(img2, None)
 
         grayout1 = cv2.drawKeypoints(img1, kp1, img1)
-        cv2.imshow('out1', grayout1)
-        cv2.waitKey(0)
-
         grayout2 = cv2.drawKeypoints(img2, kp2, img2)
-        cv2.imshow('out2', grayout2)
-        cv2.waitKey(0)
-
-        cv2.destroyAllWindows()
 
         FLANN_INDEX_KDTREE = 0
         index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
@@ -82,23 +75,14 @@ class Match():
 
         img3 = cv2.drawMatches(img1, kp1, img2, kp2, good, None, **draw_params)
 
-        plt.imshow(img3), plt.show()
-
         ori_pt = self.pos[0:2].ravel().reshape(-1, 2)
         new_w_ori = util.image2board(self.invmtx, ori_pt)
         new_w_src = util.image2board(self.invmtx, src_pts)
         new_w_dst = util.image2board(self.invmtx, dst_pts)
 
-        print 'new_w_ori'
-        print new_w_ori
-
         Mat = cv2.estimateRigidTransform(new_w_src, new_w_dst, False)
-        print 'Mat'
-        print Mat
 
         r = util.getOffset2(Mat, new_w_ori)
-        print 'r'
-        print r
 
         offset = Pose2D()
         offset.x = r[0]

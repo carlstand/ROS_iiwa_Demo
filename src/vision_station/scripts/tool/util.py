@@ -19,11 +19,7 @@ def getOffset(mat, ori):
 def getOffset2(mat, ori):
     ori = ori.ravel().reshape(-1, 2)
     ori = np.column_stack((ori, np.ones((ori.shape[0], 1)))).T
-    print 'ori'
-    print ori
     new_ori = np.dot(mat, ori)
-    print 'new_ori'
-    print new_ori
     return (new_ori.ravel()[0] - ori.ravel()[0], new_ori.ravel()[1] - ori.ravel()[1], getAngle(mat[1][0], mat[0][0]))
 
 def getNewPositions(mat, ori):
@@ -37,8 +33,6 @@ def getNewPositions(mat, ori):
 def homoMatrix(mat):
     h = mat.shape[0]
     w = mat.shape[1]
-    print h
-    print w
     for i in range(0, w):
         for j in range(0, h):
             mat[j][i] = mat[j][i]/mat[h-1][i]
