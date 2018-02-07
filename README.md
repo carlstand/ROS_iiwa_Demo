@@ -1,5 +1,6 @@
 # ROS_iiwa_Demo
 set up a framework, and enable the iiwa to track a moving target
+use case 1: camera mounted on the flange, the TCP will following a moving target, e.g. a toy train
 
 
 ## setup environments:
