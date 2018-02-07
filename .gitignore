@@ -4,3 +4,7 @@ devel/
 build/
 
 *.pyc
+
+logs/
+
+\.catkin_tools/
