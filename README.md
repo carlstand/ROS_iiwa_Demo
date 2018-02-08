@@ -1,20 +1,23 @@
 # ROS_iiwa_Demo
 set up a framework, and enable the iiwa to track a moving target
-use case 1: camera mounted on the flange, the TCP will following a moving target, e.g. a toy train
+
+use case 1: camera mounted on the flange, the TCP will following a moving target, which carries a pre-defined feature, e.g. a toy train
 
 
 ## setup environments:
 - sudo apt-get update
 - sudo apt-get upgrade
-- sudo apt-get install libvisp-dev visp-images-data ros-kinetic-visp ros-kinetic-vision-visp ros-kinetic-camera-info-manager-py ros-kinetic-camera-calibration
+- sudo apt-get install libvisp-dev visp-images-data ros-kinetic-visp ros-kinetic-vision-visp ros-kinetic-camera-info-manager ros-kinetic-camera-info-manager-py ros-kinetic-camera-calibration python-catkin-tools
 
 
 ## run steps:
 - cd {ROS_iiwa_Demo_folder}
-- catkin_make
+- rosdep install --from-paths src --ignore-src -r -y
+- catkin build
 - source {ROS_iiwa_Demo_folder}/devel/setup.bash
 - roslaunch opencv openCV.launch 
 - rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.0138 image:=/image_topic camera:=/camera
+- roslaunch iiwa_tool_examples iiwa_tool_command_moveit.launch 
 
 
 A valid QR-code pattern that can be downloaded: https://github.com/lagadic/vision_visp/releases/download/vision_visp-0.5.0/template-qr-code.pdf
