@@ -54,7 +54,10 @@
   <joint name="tool_joint" type="fixed">
     <parent link="iiwa_link_ee" />
     <child link = "tool_link" />
+<<<<<<< Updated upstream
     <!-- <origin xyz="${tool_joint_offset}" rpy="0 ${PI/2.0} 0" />   -->
+=======
+>>>>>>> Stashed changes
     <origin xyz="${tool_joint_offset}" rpy="0 0 0" />  
   </joint>
 
