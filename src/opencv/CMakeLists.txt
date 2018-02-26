@@ -13,7 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
   camera_info_manager
   sensor_msgs
   geometry_msgs
+  moveit_msgs
   std_msgs
+  moveit_commander
 )
 
 catkin_package()
