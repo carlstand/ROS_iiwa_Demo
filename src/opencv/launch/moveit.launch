@@ -10,9 +10,9 @@
   <param name="/iiwa/toolName" type="string" value="$(arg tool_name)" /> <!--Sunrise tool-->
   
   <!--  This loads the robot description  -->
-<!--   <include file="$(find iiwa_tool_moveit)/launch/moveit_planning_execution.launch">
+  <include file="$(find iiwa_tool_moveit)/launch/moveit_planning_execution.launch">
     <arg name="sim" value="false"/>
-  </include> -->
+  </include>
     
   <!-- Here we call the ROS node we have written, with the parameters on top   -->
   <!-- <node ns="iiwa" name="CommandRobotMoveit" pkg="iiwa_tool_examples" type="command_robot_moveit" respawn="false" output="screen">

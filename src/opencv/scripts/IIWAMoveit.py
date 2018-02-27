@@ -2,9 +2,10 @@
 
 import sys
 import copy
-import moveit_commander
+# import moveit_commander
 import moveit_msgs.msg
 import geometry_msgs.msg
+from moveit_commander import MoveGroupCommander
 
 import rospy
 from geometry_msgs.msg import PoseStamped
@@ -22,23 +23,23 @@ class iiwa_moveit:
         #
         # First initialize moveit_commander and rospy.
         print "============ Starting tutorial setup"
-        moveit_commander.roscpp_initialize(sys.argv)
+        # moveit_commander.roscpp_initialize(sys.argv)
         rospy.init_node('move_group_python_interface_tutorial',
                         anonymous=True)
 
         # Instantiate a RobotCommander object.  This object is an interface to
         # the robot as a whole.
-        robot = moveit_commander.RobotCommander()
+        # robot = moveit_commander.RobotCommander()
 
         # Instantiate a PlanningSceneInterface object.  This object is an interface
         # to the world surrounding the robot.
-        scene = moveit_commander.PlanningSceneInterface()
+        # scene = moveit_commander.PlanningSceneInterface()
 
         # Instantiate a MoveGroupCommander object.  This object is an interface
         # to one group of joints.  In this case the group is the joints in the left
         # arm.  This interface can be used to plan and execute motions on the left
         # arm.
-        group = moveit_commander.MoveGroupCommander("manipulator")
+        group = MoveGroupCommander("manipulator")
         group.set_end_effector_link("tool_link_ee")
 
         # We create this DisplayTrajectory publisher which is used below to publish
