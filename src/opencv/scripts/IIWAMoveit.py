@@ -196,7 +196,5 @@ if __name__ == '__main__':
     try:
         mi = iiwa_moveit()
         mi.move_group_python_interface_tutorial()
-
     except rospy.ROSInterruptException:
-        cv2.destroyAllWindows()
         pass
