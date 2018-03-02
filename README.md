@@ -6,7 +6,7 @@ use case 1: camera mounted on the flange, the TCP will following a moving target
 ## setup environments:
 - sudo apt-get update
 - sudo apt-get upgrade
-- sudo apt-get install libvisp-dev visp-images-data ros-kinetic-visp ros-kinetic-vision-visp ros-kinetic-camera-info-manager ros-kinetic-camera-info-manager-py ros-kinetic-camera-calibration python-catkin-tools
+- sudo apt-get install libvisp-dev visp-images-data ros-kinetic-visp ros-kinetic-vision-visp ros-kinetic-moveit ros-kinetic-camera-info-manager ros-kinetic-camera-info-manager-py ros-kinetic-camera-calibration python-catkin-tools
 
 ## build wrokspace:
 - cd {ROS_iiwa_Demo_folder}
