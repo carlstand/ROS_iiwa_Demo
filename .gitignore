@@ -8,3 +8,5 @@ build/
 logs/
 
 \.catkin_tools/
+
+\.vscode/
