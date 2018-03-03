@@ -39,7 +39,7 @@ int main (int argc, char **argv) {
   group.setEndEffectorLink(ee_link);
   bool success_plan = false, motion_done = false, new_pose = false;
   while (ros::ok()) {
-    if (my_iiwa.getRobotIsConnected()) {
+    if (!my_iiwa.getRobotIsConnected()) {
       
       command_cartesian_position = group.getCurrentPose(ee_link);  
       command_cartesian_position.pose.position.z -= direction * 0.10;

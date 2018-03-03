@@ -3,6 +3,8 @@ project(opencv)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -16,11 +18,18 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_msgs
   std_msgs
   moveit_commander
+  roscpp
+#  iiwa_ros
+  moveit_core 
+  moveit_ros_planning
+  moveit_ros_planning_interface
 )
 
 catkin_package()
 
 find_package(OpenCV REQUIRED)
+
+include_directories(include ${catkin_INCLUDE_DIRS})
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -158,6 +167,10 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+#add_executable(command_robot_moveit src/command_robot_moveit.cpp)
+#add_dependencies(command_robot_moveit iiwa_msgs_generate_messages_cpp)
+#target_link_libraries(command_robot_moveit ${catkin_LIBRARIES})
 
 #############
 ## Install ##
