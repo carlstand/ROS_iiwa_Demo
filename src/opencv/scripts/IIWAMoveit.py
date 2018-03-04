@@ -40,86 +40,55 @@ class iiwa_moveit:
         # arm.  This interface can be used to plan and execute motions on the left
         # arm.
         group = moveit_commander.MoveGroupCommander("manipulator")
-        # group.set_end_effector_link("iiwa_link_ee")
-
-        # We create this DisplayTrajectory publisher which is used below to publish
-        # trajectories for RVIZ to visualize.
-        display_trajectory_publisher = rospy.Publisher(
-            '/move_group/display_planned_path',
-            moveit_msgs.msg.DisplayTrajectory)
-
-        # Wait for RVIZ to initialize. This sleep is ONLY to allow Rviz to come up.
-        print "============ Waiting for RVIZ..."
-        rospy.sleep(10)
-        print "============ Starting tutorial "
-
-        # Getting Basic Information
-        # ^^^^^^^^^^^^^^^^^^^^^^^^^
-        #
-        # We can get the name of the reference frame for this robot
-        print "============ Reference frame: %s" % group.get_planning_frame()
-
-        # We can also print the name of the end-effector link for this group
-        print "============ Reference frame: %s" % group.get_end_effector_link()
-
-        # We can get a list of all the groups in the robot
-        print "============ Robot Groups:"
-        print robot.get_group_names()
-
-        # Sometimes for debugging it is useful to print the entire state of the
-        # robot.
-        print "============ Printing robot state"
-        print robot.get_current_state()
-        print "============"
-
-        # Planning to a Pose goal
-        # ^^^^^^^^^^^^^^^^^^^^^^^
-        # We can plan a motion for this group to a desired pose for the
-        # end-effector
+        group.set_planning_time(1)
+        group.set_planner_id("RRTConnectkConfigDefault")
+        group.set_end_effector_link("iiwa_link_ee")
+        rate = rospy.Rate(25)
         print "============ Generating plan 1"
-        pose_target = geometry_msgs.msg.Pose()
-        pose_target.orientation.w = 1.0
-        pose_target.position.x = 0.7
-        pose_target.position.y = -0.05
-        pose_target.position.z = 1.1
-        group.set_pose_target(pose_target)
+        d = 1
+        while not rospy.is_shutdown():
+            d = d * -1
+            pose_target = group.get_current_pose()
 
-        # Now, we call the planner to compute the plan
-        # and visualize it if successful
-        # Note that we are just planning, not asking move_group
-        # to actually move the robot
-        plan1 = group.plan()
+            pose_target.pose.position.z -= d * 0.10
+            group.set_pose_target(pose_target)
 
-        print "============ Waiting while RVIZ displays plan1..."
-        rospy.sleep(5)
+            # Now, we call the planner to compute the plan
+            # and visualize it if successful
+            # Note that we are just planning, not asking move_group
+            # to actually move the robot
+            plan1 = group.plan()
 
-        # You can ask RVIZ to visualize a plan (aka trajectory) for you.  But the
-        # group.plan() method does this automatically so this is not that useful
-        # here (it just displays the same trajectory again).
-        print "============ Visualizing plan1"
-        display_trajectory = moveit_msgs.msg.DisplayTrajectory()
+            # print "============ Waiting while RVIZ displays plan1..."
+            # rospy.sleep(5)
 
-        display_trajectory.trajectory_start = robot.get_current_state()
-        display_trajectory.trajectory.append(plan1)
-        display_trajectory_publisher.publish(display_trajectory)
+            # You can ask RVIZ to visualize a plan (aka trajectory) for you.  But the
+            # group.plan() method does this automatically so this is not that useful
+            # here (it just displays the same trajectory again).
+            # print "============ Visualizing plan1"
+            # display_trajectory = moveit_msgs.msg.DisplayTrajectory()
 
-        print "============ Waiting while plan1 is visualized (again)..."
-        rospy.sleep(5)
+            # display_trajectory.trajectory_start = robot.get_current_state()
+            # display_trajectory.trajectory.append(plan1)
+            # display_trajectory_publisher.publish(display_trajectory)
 
-        # Moving to a pose goal
-        # ^^^^^^^^^^^^^^^^^^^^^
-        #
-        # Moving to a pose goal is similar to the step above
-        # except we now use the go() function. Note that
-        # the pose goal we had set earlier is still active
-        # and so the robot will try to move to that goal. We will
-        # not use that function in this tutorial since it is
-        # a blocking function and requires a controller to be active
-        # and report success on execution of a trajectory.
+            # print "============ Waiting while plan1 is visualized (again)..."
+            # rospy.sleep(5)
 
-        # Uncomment below line when working with a real robot
-        # group.go(wait=True)
+            # Moving to a pose goal
+            # ^^^^^^^^^^^^^^^^^^^^^
+            #
+            # Moving to a pose goal is similar to the step above
+            # except we now use the go() function. Note that
+            # the pose goal we had set earlier is still active
+            # and so the robot will try to move to that goal. We will
+            # not use that function in this tutorial since it is
+            # a blocking function and requires a controller to be active
+            # and report success on execution of a trajectory.
 
+            # Uncomment below line when working with a real robot
+            group.execute(plan1, wait=True)
+            rate.sleep()
         # Planning to a joint-space goal
         # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         #

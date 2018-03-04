@@ -15,12 +15,12 @@
   <arg name="ros_rate" default="0.1"/>
 
   <!-- Here we call the ROS node we have written, with the parameters on top   -->
-  <node ns="iiwa" name="CommandRobotMoveit" pkg="opencv" type="command_robot_moveit" respawn="false" output="screen">
+  <!-- <node ns="iiwa" name="CommandRobotMoveit" pkg="opencv" type="command_robot_moveit" respawn="false" output="screen">
     <param name="move_group" value="$(arg move_group)"/>
     <param name="ee_link" value="$(arg ee_link)"/>
     <param name="ros_rate" value="$(arg ros_rate)"/>
-  </node>
+  </node> -->
 
-  <!-- <node name="iiwa_moveit" pkg="opencv" type="IIWAMoveit.py" respawn="false" output="screen"/> -->
+  <node ns="iiwa" name="iiwa_moveit" pkg="opencv" type="IIWAMoveit.py" respawn="false" output="screen"/>
 
 </launch>
