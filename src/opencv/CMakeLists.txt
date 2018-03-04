@@ -19,7 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   moveit_commander
   roscpp
-#  iiwa_ros
+  iiwa_ros
   moveit_core 
   moveit_ros_planning
   moveit_ros_planning_interface
@@ -168,9 +168,9 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
-#add_executable(command_robot_moveit src/command_robot_moveit.cpp)
-#add_dependencies(command_robot_moveit iiwa_msgs_generate_messages_cpp)
-#target_link_libraries(command_robot_moveit ${catkin_LIBRARIES})
+add_executable(command_robot_moveit src/command_robot_moveit.cpp)
+add_dependencies(command_robot_moveit iiwa_msgs_generate_messages_cpp)
+target_link_libraries(command_robot_moveit ${catkin_LIBRARIES})
 
 #############
 ## Install ##
