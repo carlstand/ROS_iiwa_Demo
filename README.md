@@ -7,9 +7,12 @@ use case 1: camera mounted on the flange, the TCP will following a moving target
 - sudo apt-get update
 - sudo apt-get upgrade
 - sudo apt-get install libvisp-dev visp-images-data ros-kinetic-visp ros-kinetic-vision-visp ros-kinetic-moveit ros-kinetic-camera-info-manager ros-kinetic-camera-info-manager-py ros-kinetic-camera-calibration python-catkin-tools
+- pip3 install trollius [^catkin build]
 
 ## build wrokspace:
 - cd {ROS_iiwa_Demo_folder}
 - rosdep install --from-paths src --ignore-src -r -y
 - catkin build
 - source {ROS_iiwa_Demo_folder}/devel/setup.bash
+
+[^catkin build]: maybe necessary for python3 builder
