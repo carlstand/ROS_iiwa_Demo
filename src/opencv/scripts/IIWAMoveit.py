@@ -40,7 +40,7 @@ class iiwa_moveit:
         # arm.  This interface can be used to plan and execute motions on the left
         # arm.
         group = moveit_commander.MoveGroupCommander("manipulator")
-        group.set_planning_time(1)
+        # group.set_planning_time(1)
         group.set_planner_id("RRTConnectkConfigDefault")
         group.set_end_effector_link("iiwa_link_ee")
         rate = rospy.Rate(25)
