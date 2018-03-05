@@ -13,7 +13,7 @@ class ImageReader:
     def __init__(self):
         self.pub = rospy.Publisher('image_topic', Image, queue_size=10)
         rospy.init_node('ImageReader', anonymous=False)
-        self.rate = rospy.Rate(25)
+        self.rate = rospy.Rate(10)
         self.bridge = CvBridge()
         self.cap = cv2.VideoCapture(0)
 

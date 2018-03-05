@@ -10,12 +10,15 @@ class PositionReader:
     def __init__(self):
         self.image_sub = rospy.Subscriber(
             "/visp_auto_tracker/object_position", PoseStamped, self.callback)
+        self.pub = rospy.Publisher('object_position', PoseStamped, queue_size=10)
         rospy.init_node('PositionReader', anonymous=False)
-        self.data = None
+        self.data = PoseStamped()
 
     def callback(self, data):
-        print(data)
-
+        if(self.data.pose.position.x != data.pose.position.x):
+            self.pub.publish(data)
+            print(data)
+            self.data = data
 
 if __name__ == '__main__':
     try:
