@@ -46,7 +46,7 @@ class iiwa_moveit:
         # print(pose_target.pose.position.x)
         print(self.group.get_current_pose("iiwa_link_ee").pose.position)
 
-        # self.group.set_start_state_to_current_state()
+        self.group.set_start_state_to_current_state()
         self.group.set_pose_target(pose_target, "iiwa_link_ee")
 
         self.group.plan()
